@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+            <div class="logo-part">
+                    <img src="img/logo.jpg" alt="">
+                </div>
+                <div class="services">
+                    <button>Xidmet secin</button>
+                </div>
+                <div class="providers">
+                    <button>Express</button>
+                    <button>Bakcell</button>
+                    <button>Nar</button>
+                    <button>Azerenerji</button>
+                    <button>Azersu</button>
+                    <button>AileTV</button>
+                    <button>EmbaFinans</button>
+
+                </div>
+                <div class="serv">
+                    <button>Bank xidmetler</button>
+                    <button>Mobil operatorlar</button>
+                    <button>Komunal xidmetler</button>
+                    <button>Kabel TV</button>
+                    <button>Internet</button>
+                    <button>Eylence</button>
+                </div>
+                <footer class="languages">
+                       <div class="col-left">
+                            <div> <img src="img/english.jpg" alt=""></div>
+                        <div> <img src="img/download.png" alt=""></div>
+                        <div> <img src="img/flag-400.png" alt=""></div>
+                       </div>
+                       <div class="center">
+                           <p>Qaynar xett:132</p>
+                       </div>
+                       <div class="col-right">
+                           <button>Istifade qaydalari</button>
+                           <button>Odenis Yoxlanilmasi</button>
+                       </div>
+                    
+                </footer>
+    </div>
+
+    <script>
+
+   function create(elementName,elementClass,text=null,location=null,whereAppend,bg){
+       let _color=bg;
+        let _element=document.createElement(elementName);
+    _element.className=elementClass;
+    if(text!=null||text!=undefined){
+        _element.innerText=text;
+    }
+    if(location!=null){
+        for(let f in location){
+       if(f=='src'||f=="href"){
+            _element[f]=location[f];
+            console.log(location[f]);
+        }
+        else{
+            console.log(location[f]);
+        }
+    }
+   
+    }
+    if(bg!=null){
+        _element.style.backgroundColor=_color;
+    }
+    whereAppend.appendChild(_element);
+    
+    return this.element;
+    }
+    let myContainer=new create('div',"container",null,null,document.body);
+    let myLogoPart=new create('div',"logo-part",null,null,document.getElementsByClassName('container')[1]);
+    let myLogoImg=new create('img',null,null,{'src':'img/logo.jpg'},document.getElementsByClassName('container')[1].getElementsByClassName('logo-part')[0]);
+    let myServices=new create('div',"services",null,null,document.getElementsByClassName('container')[1]);
+    let buttonSer=new create('button',null,'Xidmet secin',null,document.getElementsByClassName('container')[1].getElementsByClassName('services')[0]);
+    let myProvides=new create('div',"providers",null,null,document.getElementsByClassName('container')[1]);
+    let myServ=new create('div',"serv",null,null,document.getElementsByClassName('container')[1]);
+    let azElements={
+        _locFirstLine:document.getElementsByClassName('container')[1].getElementsByClassName('providers')[0],
+        _locationSecondLine:document.getElementsByClassName('container')[1].getElementsByClassName('serv')[0],
+        locationDiv:document.getElementsByClassName('container')[1].getElementsByTagName('footer')[0],
+        firstLine:{
+            button1:{
+                text:"Express"
+            },
+            button2:{
+                text:"Bakcell"
+            },
+            button3:{
+                text:"Nar"
+            },
+            button4:{
+                text:"Azerenerji"
+            },
+            button5:{
+                text:"Azersu"
+            },
+            button6:{
+                text:"Azersu"
+            },
+            button7:{
+                text:"EmbaFinans"
+            },
+ 
+        },
+        secondLine:{
+            button1:{
+                text:"Bank xidmetler"
+            },
+            button2:{
+                text:"Mobil operatorlar"
+            },
+            button3:{
+                text:"Komunal xidmetler"
+            },
+            button4:{
+                text:"Kabel TV"
+            },
+            button5:{
+                text:"Internet"
+            },
+            button6:{
+                text:"Eylence"
+            },
+            
+        },
+        thirdLine:{
+                
+                divLeft:{
+                    elementName:"div",
+                    elementClass:"col-left",
+                    elemenText:null,
+                },
+                divCenter:{
+                    elementName:"div",
+                    elementClass:"center",
+                    elemenText:null,
+                },
+                divRight:{
+                    elementName:"div",
+                    elementClass:"col-right",
+                    elemenText:null,
+                },
+            
+        }
+   }
+
+    for(let f in azElements.firstLine){
+        let element = new create('button',null,azElements.firstLine[f].text,null,azElements._locFirstLine);
+        }
+     
+    for(let f in azElements.secondLine){
+        let element = new create('button',null,azElements.secondLine[f].text,null,azElements._locationSecondLine);
+        }
+   
+ 
+    let myFooter=new create('footer',"languages",null,null,document.getElementsByClassName('container')[1]);
+    function createElement(array){
+        
+        for(let f in array){
+            console.log(azElements.locationDiv);
+        if(typeof array[f]!="object"){
+           createElement(array[f]);
+        }else{
+            let element = new create(array[f].elementName,array[f].elementClass,array[f].elemenText,azElements.locationDiv);
+        }
+    }
+    }
+    //create(elementName,elementClass,text=null,location=null,whereAppend,bg)
+    createElement(azElements.thirdLine);
+    // let myFooterLeft=new create('div',"col-left",null,null,document.getElementsByClassName('container')[1].getElementsByTagName('footer')[0]);
+    // let myFooterCenter=new create('div','center',null,null,document.getElementsByClassName('container')[1].getElementsByTagName('footer')[0]);
+    // let myFooterRight=new create('div','col-right',null,null,document.getElementsByClassName('container')[1].getElementsByTagName('footer')[0]);
+
+    // let myFooterLeftDiv1=new create('div',null,null,null,document.getElementsByClassName('container')[1].getElementsByTagName('footer')[0].getElementsByClassName('col-left')[0]);
+    // let myFooterLeftDivImg1=new create('img',null,null,{'src':'img/english.jpg'},document.getElementsByClassName('container')[1].getElementsByTagName('footer')[0].getElementsByClassName('col-left')[0].getElementsByTagName('div')[0]);
+    // let myFooterLeftDiv2=new create('div',null,null,null,document.getElementsByClassName('container')[1].getElementsByTagName('footer')[0].getElementsByClassName('col-left')[0]);
+    // let myFooterLeftDivImg2=new create('img',null,null,{'src':'img/download.png'},document.getElementsByClassName('container')[1].getElementsByTagName('footer')[0].getElementsByClassName('col-left')[0].getElementsByTagName('div')[1]);
+    // let myFooterLeftDiv3=new create('div',null,null,null,document.getElementsByClassName('container')[1].getElementsByTagName('footer')[0].getElementsByClassName('col-left')[0]);
+    // let myFooterLeftDivImg3=new create('img',null,null,{'src':'img/flag-400.png'},document.getElementsByClassName('container')[1].getElementsByTagName('footer')[0].getElementsByClassName('col-left')[0].getElementsByTagName('div')[2]);
+    
+    // let myFooterCenterP=new create('p',null,"Qaynar xett:132",null,document.getElementsByClassName('container')[1].getElementsByTagName('footer')[0].getElementsByClassName('center')[0]);
+    // let myFooterRightButton1=new create('button',null,null,null,document.getElementsByClassName('container')[1].getElementsByTagName('footer')[0].getElementsByClassName('col-left')[0].getElementsByTagName('div')[0]);
+    // let myFooterRightButton2=new create('button',null,null,null,document.getElementsByClassName('container')[1].getElementsByTagName('footer')[0].getElementsByClassName('col-left')[0].getElementsByTagName('div')[0]);
+    
+    </script>
+</body>
+</html> 
